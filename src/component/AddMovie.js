@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useId } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import {Button} from 'react-bootstrap'
 import { Form } from 'react-bootstrap'
 import {useState} from 'react'
+import { nanoid } from 'nanoid'
+
 
 function AddMovie(props) {
     const [show, setShow] = useState(false);
   const [newMovie,setNewMovie]=useState({
+    id : useId(),
     title:"",
     rating:"",
     description:"",
     poster:"",
-
+    trailer:""
   })
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -38,6 +41,17 @@ function AddMovie(props) {
                   name="title"
                   onChange={handleChange}
                   placeholder="title"
+                  autoFocus
+                />
+              </Form.Group>
+            
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Trailer</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="trailer"
+                  onChange={handleChange}
+                  placeholder="trailer"
                   autoFocus
                 />
               </Form.Group>
